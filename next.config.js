@@ -9,9 +9,11 @@ module.exports = {
   },
   swcMinify: true,
   experimental: {
-    emotion: true,
+    serverComponents: true,
+    runtime: 'nodejs',
   },
   compiler: {
+    emotion: true,
     reactRemoveProperties: isProd && {
       properties: ['^data-test'],
     },

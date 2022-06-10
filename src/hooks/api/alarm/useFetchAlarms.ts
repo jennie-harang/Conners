@@ -10,10 +10,11 @@ import useFetchUserProfile from '../auth/useFetchUserProfile';
 import useCatchFirestoreErrorWithToast from '../useCatchFirestoreErrorWithToast';
 
 function useFetchAlarms() {
-  const { data: user } = useFetchUserProfile();
+  const { data: user } = useFetchUserProfile(true);
 
   const query = useQuery<Alarm[], FirestoreError>(['alarms'], () => getUserAlarm(user?.uid as string), {
     enabled: !!user,
+    suspense: true,
   });
 
   const { isError, error, data } = query;

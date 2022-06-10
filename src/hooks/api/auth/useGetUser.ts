@@ -2,8 +2,10 @@ import { firebaseAuth } from '@/services/firebase';
 
 import useAuthUser from './useAuthUser';
 
-function useGetUser() {
-  const user = useAuthUser(['user'], firebaseAuth);
+function useGetUser(suspense?: boolean) {
+  const user = useAuthUser(['user'], firebaseAuth, {
+    suspense,
+  });
 
   return {
     ...user,
